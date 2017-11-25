@@ -1,0 +1,32 @@
+﻿<Window x:Class="WpfApp1.Views.SignInWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        xmlns:helpers="clr-namespace:WpfApp1.Views.Helpers"
+        mc:Ignorable="d"
+        Title="Login" Height="210" Width="300" SizeToContent="WidthAndHeight"
+        x:ClassModifier="internal">
+	<Grid Name="MainGrid">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="70"/>
+			<RowDefinition Height="70"/>
+			<RowDefinition MinHeight="20"  MaxHeight="30"/>
+			<RowDefinition Height="10"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<helpers:LabelFieldView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" PropertyValue="{Binding Login, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+		                        PropertyName="Login" Margin="10" Grid.RowSpan="2"></helpers:LabelFieldView>
+		<helpers:LabelPasswordView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" PropertyValue="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+		                           PropertyName="Password" Margin="10" Grid.RowSpan="2"></helpers:LabelPasswordView>
+
+		<Button Grid.Row="2" Grid.Column="0" Content="Log in" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Command="{Binding SignInCommand}"/>
+		<Button Grid.Row="2" Grid.Column="1" Content="Sign up" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Command="{Binding SignUpCommand}" />
+		<Button Grid.Row="2" Grid.Column="2" Content="Cancel" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Command="{Binding CloseCommand}"/>
+	</Grid>
+</Window>
