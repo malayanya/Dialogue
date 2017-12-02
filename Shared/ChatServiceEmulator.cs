@@ -13,7 +13,7 @@ namespace Shared
 
         public ChatServiceEmulator()
         {
-            User user = new User("Mike", "Jhonson", "mikejhonson@gmail.com", "asd", "asd");
+            User user = new User("Mike", "Jhonson", "mikejhonson@gmail.com", "asd", "dsa");
             Chat chat = new Chat(user);
 
             AddUser(user);

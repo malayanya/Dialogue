@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         xmlns:helpers="clr-namespace:WpfApp1.Views.Helpers"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
         Title="Chats" Height="400" Width="600">
 	<Grid>
@@ -18,8 +19,11 @@
 		</Grid.ColumnDefinitions>
 
 		<ListBox Name="lbChatList" Grid.Row="0" Margin="10" SelectionChanged="lbChatList_SelectionChanged"/>
-		<Button Name="bNewChat" Grid.Row="1" Margin="10,0,10,10" MinWidth="100" Click="bNewChat_Click">
-			<Label x:Name="label" Content="New chat"/>
+		<Button Name="bNewChat" Grid.Row="1" Margin="57,0,10,10" MinWidth="100" Click="bNewChat_Click">
+			<Label x:Name="lNewChat" Content="New chat"/>
+		</Button>
+		<Button Name="bSignOut" Grid.Row="1" Margin="10,0,152,10" Click="bSignOut_Click">
+			<fa:ImageAwesome Icon="SignOut" VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Width="17" />
 		</Button>
 		<ScrollViewer Name="svMessages" Grid.Column="1" Margin="0,10,10,10" >
 			<StackPanel Name="spMessages" />

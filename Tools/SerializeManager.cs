@@ -4,7 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace WalletSimulator.Tools
 {
-    internal static class SerializeManager
+    public static class SerializeManager
     {
         private static string CheckAndCreatePath(string filename)
         {
@@ -16,35 +16,20 @@ namespace WalletSimulator.Tools
 
         public static void Serialize<TObject>(TObject obj, string fileName)
         {
-            try
-            {
-                var formatter = new BinaryFormatter();
-                var filename = CheckAndCreatePath(fileName);
+            var formatter = new BinaryFormatter();
+            var filename = CheckAndCreatePath(fileName);
 
-                using (var fs = new FileStream(filename, FileMode.OpenOrCreate))
-                {
-                    formatter.Serialize(fs, obj);
-                }
-            }
-            catch (Exception ex)
+            using (var fs = new FileStream(filename, FileMode.OpenOrCreate))
             {
-                Logger.Log("Failed to serialize object", ex);
+                formatter.Serialize(fs, obj);
             }
         }
         public static TObject Deserialize<TObject>(string filename)
         {
-            try
+            var formatter = new BinaryFormatter();
+            using (var fs = new FileStream(filename, FileMode.OpenOrCreate))
             {
-                var formatter = new BinaryFormatter();
-                using (var fs = new FileStream(filename, FileMode.OpenOrCreate))
-                {
-                    return (TObject) formatter.Deserialize(fs);
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Log("Failed to deserialize object", ex);
-                throw;
+                return (TObject) formatter.Deserialize(fs);
             }
         }
     }

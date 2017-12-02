@@ -110,6 +110,9 @@ namespace WpfApp1.ViewModels
                     return false;
                 }
                 _app.CurrentUser = currentUser;
+
+                UserCredentials credentials = new UserCredentials(_login, _password);
+                _app.SaveCredentialsForAutoLogin(credentials);
                 return true;
             });
             OnRequestLoader(false);

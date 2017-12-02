@@ -19,6 +19,17 @@ namespace WpfApp1.Views
         public SignInWindow()
         {
             InitializeComponent();
+
+            App app = ((App)Application.Current);
+            if (app.CurrentUser != null)
+            {
+                // Already signed in
+                var chatListWindow = new ChatListWindow();
+                chatListWindow.Show();
+                Close();
+                return;
+            }
+
             var signInViewModel = new SignInViewModel();
             signInViewModel.RequestClose += CloseOrListChatsIfSignedIn;
             signInViewModel.RequestLoader += OnRequestLoader;

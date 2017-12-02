@@ -39,7 +39,7 @@ namespace WalletSimulator.Tools
             return Encoding.UTF32.GetString(arrayList.ToArray(typeof(byte)) as byte[]);
         }
 
-        private static string EncryptString(string inputString, string xmlString)
+        public static string EncryptString(string inputString, string xmlString)
         {
             RSACryptoServiceProvider rsaCryptoServiceProvider = new RSACryptoServiceProvider(1024);
             rsaCryptoServiceProvider.FromXmlString(xmlString);

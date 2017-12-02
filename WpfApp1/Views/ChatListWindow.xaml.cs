@@ -47,6 +47,9 @@ namespace WpfApp1.Views
             _app.ChatService.AddMessage(message);
             AddMessageToList(message);
 
+            tbNewMessage.Text = "";
+            tbNewMessage.Focus();
+
             MakeBotReply();
 
             Logger.Log("Added message '" + message + "'");
@@ -69,6 +72,8 @@ namespace WpfApp1.Views
             Label label = new Label();
             label.Content = message.ToString();
             spMessages.Children.Add(label);
+
+            svMessages.ScrollToBottom();
         }
 
         private void SetCurrentChat(Chat chat)
@@ -139,6 +144,15 @@ namespace WpfApp1.Views
             SetCurrentChat(chat);
 
             MakeBotReply();
+        }
+
+        private void bSignOut_Click(object sender, RoutedEventArgs e)
+        {
+            _app.SignOut();
+
+            var loginWindow = new SignInWindow();
+            loginWindow.Show();
+            Close();
         }
     }
 }
